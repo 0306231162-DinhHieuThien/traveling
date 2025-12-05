@@ -1,0 +1,137 @@
+.avatar-dropdown-container {
+  position: relative;
+  display: inline-block;
+  font-family: sans-serif;
+}
+
+/* Phần hiển thị Avatar trên Navbar */
+.avatar-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1); /* Nền mờ nhẹ */
+  border: 1px solid transparent;
+
+  &:hover, &.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .avatar-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+
+    .user-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .user-role {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: #ddd;
+    }
+  }
+
+  .arrow-icon {
+    font-size: 10px;
+    color: #fff;
+    margin-left: 5px;
+    transition: transform 0.3s;
+
+    &.up {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+/* Menu xổ xuống */
+.dropdown-menu {
+  position: absolute;
+  top: 130%; /* Đẩy xuống dưới avatar */
+  right: 0;
+  width: 220px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 1000;
+  border: 1px solid #f0f0f0;
+  animation: fadeIn 0.2s ease-out;
+
+  .dropdown-header {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+
+    .email {
+      margin: 0;
+      font-size: 13px;
+      color: #666;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 5px 0;
+  }
+
+  .dropdown-list {
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+
+    li {
+      a, &.logout-item {
+        display: block;
+        padding: 10px 20px;
+        font-size: 14px;
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        &:hover {
+          background-color: #f0f7ff;
+          color: #007bff;
+        }
+      }
+
+      &.logout-item {
+        color: #dc3545; /* Màu đỏ cho nút đăng xuất */
+        
+        &:hover {
+          background-color: #fff5f5;
+          color: #c82333;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

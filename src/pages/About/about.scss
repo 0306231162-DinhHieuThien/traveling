@@ -1,0 +1,283 @@
+//@use "sass:color"; // ⬅️ Thêm module này để sử dụng color.adjust()
+// Định nghĩa biến màu cơ bản
+$primary-color: #3b82f6; // Màu xanh dương chính
+$secondary-color: #2c3e50; // Màu nền Footer/Header
+$text-color: #666;
+$heading-color: #333;
+
+.about-page {
+  
+  // --- 1. ABOUT HERO (Banner đầu trang) ---
+  .about-hero {
+    margin-top: 4.6rem;
+    // 1. Đảm bảo chiều cao: Ảnh phải có một chiều cao cố định để hiển thị.
+    height: 400px; // Hoặc một giá trị bạn mong muốn
+
+    // 2. Ngăn ảnh lặp lại: Quan trọng để ảnh không bị nhân đôi.
+    background-repeat: no-repeat; 
+    
+    // 3. Đảm bảo ảnh che phủ toàn bộ khu vực: 
+    // Thuộc tính này sẽ phóng to ảnh để nó lấp đầy container.
+    background-size: cover; 
+    
+    // 4. Định vị ảnh: Căn ảnh ở giữa để phần quan trọng nhất hiển thị.
+    background-position: center center;
+    height: 400px; // Chiều cao phù hợp
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    
+    // Áp dụng lớp mờ nhẹ lên ảnh nếu cần
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.2); // Lớp phủ màu đen 20%
+      z-index: 1;
+    }
+
+    .hero-content {
+      z-index: 2; // Đảm bảo nội dung nằm trên lớp phủ
+      h1 {
+        font-size: 3rem;
+        color: white;
+        margin: 0;
+        letter-spacing: 2px;
+      }
+    }
+  }
+
+  // --- 2. ABOUT MAIN CONTENT (Phần chính) ---
+  .about-main-content {
+    padding: 60px 0;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    // Box màu xanh "WE ARE BEST FOR..."
+    .best-since-box {
+      margin: -90px auto 40px auto;
+      background-color: $primary-color;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 30px 20px;
+      margin-bottom: 40px;
+      width: 50%; // Chiếm nửa chiều rộng theo hình mẫu
+      margin: -90px auto 40px auto; // Dùng margin âm để kéo lên trên
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    // Thiết lập bố cục 2 cột chính
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr; // Cột trái rộng gấp đôi cột phải
+      gap: 50px; 
+
+      @media (max-width: 992px) {
+        grid-template-columns: 1fr; // Trên mobile/tablet thành 1 cột
+      }
+      
+      .content-left {
+        h2 {
+          font-size: 2rem;
+          color: $heading-color;
+          margin-bottom: 20px;
+          position: relative;
+          
+          // Gạch chân đơn giản dưới tiêu đề theo kiểu dáng hiện đại
+          &::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: $primary-color;
+            margin-top: 10px;
+          }
+        }
+        p {
+          color: $text-color;
+          line-height: 1.7;
+          margin-bottom: 15px;
+        }
+      }
+      
+      // Cột phải: Các Feature
+      .content-right {
+        .feature-item {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 30px;
+          
+          .feature-icon {
+            width: 60px;
+            height: 60px;
+            min-width: 60px; // Đảm bảo icon không bị co lại
+            border-radius: 50%;
+            background-color: $primary-color; 
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 20px;
+          }
+          
+          .feature-content {
+            h4 {
+              margin-top: 0;
+              margin-bottom: 5px;
+              color: $heading-color;
+            }
+            p {
+              font-size: 0.9rem;
+              color: $text-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // --- 3. CTA BANNER (Banner dưới cùng) ---
+  .cta-banner {
+    // Tái tạo banner video/CTA
+    //background-image: url('path/to/your/cta-image.jpg'); // Thay bằng đường dẫn ảnh thực tế
+    // background-size: cover;
+    // background-position: center center;
+    // padding: 100px 0;
+    // text-align: center;
+    // position: relative;
+        // 1. Đảm bảo chiều cao: Ảnh phải có một chiều cao cố định để hiển thị.
+    height: 600px; // Hoặc một giá trị bạn mong muốn
+
+    // 2. Ngăn ảnh lặp lại: Quan trọng để ảnh không bị nhân đôi.
+    background-repeat: no-repeat; 
+    
+    // 3. Đảm bảo ảnh che phủ toàn bộ khu vực: 
+    // Thuộc tính này sẽ phóng to ảnh để nó lấp đầy container.
+    background-size: cover; 
+    //margin-bottom: .2rem;
+    background-position: center top;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    .cta-overlay {
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.4); // Lớp phủ tối màu để chữ nổi bật
+      padding: 50px;
+      // Kéo dãn overlay ra toàn bộ banner
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column; // Thêm dòng này để các item trong CTA content xếp chồng lên nhau
+
+      align-items: center;//day noi dung xuong duoi
+      justify-content: center;
+      // 2. THÊM PADDING BOTTOM: Tạo khoảng trống từ đáy đẩy nội dung lên
+     // padding-bottom: 80px; // Điều chỉnh giá trị này để căn chỉnh chính xác
+     // padding-left: 15px; // Đảm bảo padding ngang
+      //padding-right: 15px; // Đảm bảo padding ngang
+      padding: 40px 15px;
+    }
+
+    .cta-content {
+      padding-top: 50px;
+      color: white;
+      max-width: 700px;
+      z-index: 1;
+      text-align: center;
+      margin: 0 auto; // Đảm bảo nội dung chữ căn giữa
+      position: relative;/* Để phần tử con có thể định vị tuyệt đối */
+      .play-icon {   
+    position: relative; 
+    top: 10%; /* Căn giữa theo chiều dọc */
+    left: 50%; /* Căn giữa theo chiều ngang */
+    transform: translate(-50%, -50%); /* Đẩy icon về giữa chính xác */
+    width: 80px;
+    height: 80px;
+    background-color: #3498db;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid white;
+    transition: background-color 0.3s;
+  
+        }
+
+        .video-container {
+          margin-top: 20px;
+        }
+
+        video {
+          max-width: 100%;
+          height: auto;
+        }
+
+      
+      h2 {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+        
+      }
+
+      p {
+        margin-bottom: 30px;
+        opacity: 0.8;
+      }
+
+      .cta-buttons {
+          
+        .btn {
+          padding: 12px 35px;
+          border-radius: 4px;
+          font-size: 1rem;
+          font-weight: bold;
+          cursor: pointer;
+          margin: 0 10px;
+          transition: background-color 0.3s;
+          
+          &-primary {
+            background-color: $primary-color;
+            color: white;
+            border: 2px solid $primary-color;
+            
+            &:hover {
+              background-color: darken($primary-color, 10%);
+              border-color: darken($primary-color, 10%);
+            }
+          }
+          
+          &-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            
+            &:hover {
+              background-color: white;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,137 @@
+.cta-footer {
+  .cta {
+    background: var(--primary);
+    color: #fff;
+    text-align: center;
+    padding: 60px 24px;
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 14px;
+      max-width: 700px;
+      margin: 0 auto 24px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+    }
+  }
+
+  .footer-extended {
+    background: #0c1a2a;
+    color: #dbe7ff;
+    padding: 60px 24px 20px;
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    h4 {
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    p,
+    span {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .footer__posts li {
+      margin-bottom: 12px;
+
+      strong {
+        display: block;
+        color: #fff;
+      }
+
+      span {
+        font-size: 12px;
+        color: #b8cffb;
+      }
+    }
+
+    .footer__gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+
+      img {
+        width: 100%;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 6px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .footer__form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      input {
+        flex: 1;
+        padding: 8px;
+        border-radius: 6px;
+        border: none;
+        font-size: 14px;
+      }
+
+      button {
+        padding: 10px;
+        border-radius: 6px;
+        font-weight: 600;
+        background-color: var(--primary);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          filter: brightness(0.9);
+        }
+      }
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      text-align: center;
+
+      .footer__links {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 12px;
+
+        a {
+          color: #b8cffb;
+          font-size: 13px;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      p {
+        font-size: 12px;
+        color: #b8cffb;
+      }
+    }
+  }
+}

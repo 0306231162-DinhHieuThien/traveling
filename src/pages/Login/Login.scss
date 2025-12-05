@@ -1,0 +1,262 @@
+// Login.scss
+
+/* --- 1. Cấu trúc trang nền (Background) --- */
+.login-page {
+  padding-top: 60px; /* Giảm bớt chút để cân đối trên màn nhỏ */
+  padding-bottom: 60px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+
+  /* Hình nền */
+  background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') no-repeat center center/cover;
+
+  /* Lớp phủ tối (Overlay) */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* Tăng độ tối lên 0.4 để chữ trắng dễ đọc hơn */
+    backdrop-filter: blur(3px); /* Làm mờ nhẹ background gốc */
+  }
+}
+
+/* --- 2. Khung đăng nhập (Glassmorphism Card) --- */
+.login-container {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+
+  /* Hiệu ứng kính */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Viền sáng nhẹ */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Typography */
+.login-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.login-subtitle {
+  margin-bottom: 30px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* --- 3. Form Styling --- */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Style chung cho Input (Email) */
+.form-group {
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 30px; /* Bo tròn kiểu viên thuốc */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    outline: none;
+    background: rgba(255, 255, 255, 0.2); /* Nền input trong suốt */
+    color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    &:focus {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+/* --- 4. Style riêng cho 6 ô OTP (SỬA LẠI PHẦN NÀY) --- */
+.otp-input-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px; /* Khoảng cách giữa các ô */
+  margin-bottom: 10px;
+
+  /* Style cho từng ô input nhỏ */
+  .otp-box {
+    width: 45px;
+    height: 55px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.2s ease;
+
+    &:focus {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: #f7b286; /* Màu cam khi focus */
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+  }
+}
+/* --- Style cho Link Quên mật khẩu --- */
+.forgot-password-link {
+  width: 100%;
+  text-align: right; /* Căn lề phải */
+  margin-top: 15px;  /* Cách nút Login ra một chút */
+  margin-bottom: 5px;
+
+  a {
+    font-size: 14px;
+    /* Màu trắng hơi mờ để không tranh chấp với nút chính */
+    color: rgba(255, 255, 255, 0.7); 
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    
+    /* Hiệu ứng khi di chuột */
+    &:hover {
+      color: #ffffff; /* Sáng hẳn lên */
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Tạo hiệu ứng neon/phát sáng nhẹ */
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+/* --- 5. Buttons --- */
+.btn-signin {
+  width: 100%;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  /* Dùng màu cam giống code mẫu bạn gửi, hoặc đổi thành #4CAF50 nếu muốn màu xanh */
+  background-image: linear-gradient(45deg, #f7b286, #ff7e5f);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(247, 178, 134, 0.4);
+  transition: transform 0.2s, filter 0.2s;
+
+  &:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+/* --- 6. Các thành phần phụ (Footer) --- */
+.otp-resend {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+
+  span {
+    color: #f7b286;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  .change-email {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 13px;
+    font-style: italic;
+    text-decoration: none;
+    opacity: 0.8;
+  }
+}
+
+.separator {
+  margin: 25px 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Đường gạch ngang 2 bên */
+  &::before, &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  span {
+    padding: 0 10px;
+  }
+}
+
+.social-login {
+  display: flex;
+  gap: 15px;
+  
+  .btn-social {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
+    
+    &.facebook {
+      background-color: rgba(59, 89, 152, 0.8); 
+      &:hover { background-color: #3b5998; }
+    }
+    
+    &.twitter {
+      background-color: rgba(29, 161, 242, 0.8);
+      &:hover { background-color: #1da1f2; }
+    }
+  }
+}
+
+/* --- Animation --- */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

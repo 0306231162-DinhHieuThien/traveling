@@ -1,0 +1,147 @@
+// src/pages/Register/Register.scss
+
+.register-page {
+  /* Dùng chung hình nền với Login hoặc đổi hình khác tùy ý */
+  background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  /* ✅ Padding quan trọng để không bị che bởi Navbar/Footer */
+  padding-top: 120px;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+
+  /* Lớp phủ tối */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.register-container {
+  position: relative;
+  width: 100%;
+  max-width: 450px; /* Rộng hơn Login xíu vì nhiều ô hơn */
+  padding: 40px;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+
+  /* Hiệu ứng Glassmorphism */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.register-title {
+  font-size: 28px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.register-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .form-group {
+    /* ✅ Quan trọng: Để icon con mắt định vị tuyệt đối theo ô này */
+    position: relative; 
+
+    input {
+      width: 100%;
+      /* ✅ CẬP NHẬT PADDING: Tăng padding bên phải (50px) để chữ không đè lên icon */
+      padding: 14px 50px 14px 20px; 
+      border-radius: 30px;
+      border: none;
+      outline: none;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      box-sizing: border-box; /* Đảm bảo padding không làm vỡ layout */
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      &:focus {
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    /* ✅ STYLE MỚI CHO ICON CON MẮT */
+    .toggle-password {
+      position: absolute;
+      right: 20px; /* Cách lề phải 20px để icon nằm trong input */
+      top: 50%;
+      transform: translateY(-50%); /* Căn giữa icon theo chiều dọc */
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.7); /* Màu icon mờ nhẹ */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10; /* Đảm bảo icon nằm trên input */
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #fff; /* Icon sáng lên khi di chuột vào */
+      }
+
+      svg {
+        font-size: 18px; /* Kích thước icon */
+      }
+    }
+  }
+
+  .btn-signup {
+    margin-top: 10px;
+    padding: 14px;
+    border-radius: 30px;
+    border: none;
+    background-color: #ff5a5f; 
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.form-footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+
+  .login-link {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 5px;
+
+    &:hover {
+      text-decoration: underline;
+      color: #ff5a5f;
+    }
+  }
+}

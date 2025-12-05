@@ -1,0 +1,91 @@
+/* src/Components/Booking/Booking.scss */
+
+.booking-section {
+  padding: 60px 20px;
+  background-color: #f8fcfc; /* Nền xanh rất nhạt */
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+
+  .booking-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #222;
+
+    span {
+      color: #008fa0; /* Màu xanh Teal chuẩn mẫu */
+    }
+  }
+
+  .booking-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .booking-item {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .booking-icon-box {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      background-color: #e0f2f1; /* Nền tròn xanh nhạt */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+
+      /* Icon bên trong */
+      .booking-icon-img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+
+      /* Số thứ tự màu cam (Badge) */
+      .booking-number-badge {
+        position: absolute;
+        top: 0;
+        right: -5px;
+        background-color: #fca311; /* Màu Cam chuẩn mẫu */
+        color: #fff;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #fff;
+      }
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #000;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.6;
+    }
+  }
+}
