@@ -3,18 +3,16 @@ import './Navbar.scss';
 import { Link } from 'react-router-dom';
 // LƯU Ý: Kiểm tra đường dẫn import này có đúng với máy bạn không
 import AvatarDropdown from '../AvatarDropdown/AvatarDropdown'; 
+import { AuthContext } from '../../context/AuthContext';
+import { useContext } from 'react';
 
 const Navbar = () => {
-  // --- 1. STATE QUẢN LÝ USER (GIẢ LẬP ĐỂ TEST) ---
-  // Bạn thử đổi null thành object user bên dưới để xem giao diện thay đổi
-  const [user, setUser] = useState({
-    name: "Tùng Phạm",
-    role: "seller", // Thử đổi thành 'user' để test menu khác
-    avatar: "" // Để trống để test icon mặc định
-  });
-  // const [user, setUser] = useState(null); // <-- Bật dòng này để test giao diện CHƯA ĐĂNG NHẬP
+  const { auth, logout } = useContext(AuthContext);
+  // const [user, setUser] = useState(() => {
+  //   const saved = localStorage.getItem("user");
+  //   return saved ? JSON.parse(saved) : null;
+  // });
 
-  // --- 2. LOGIC DROPDOWN TOUR ---
   const [isTourDropdownOpen, setIsTourDropdownOpen] = useState(false);
   const handleMouseEnter = () => setIsTourDropdownOpen(true);
   const handleMouseLeave = () => setIsTourDropdownOpen(false);
@@ -34,9 +32,8 @@ const Navbar = () => {
           <Link to="/about">ABOUT US</Link>
           <Link to="/destination">DESTINATION</Link>
           <Link to="/packages">PACKAGES</Link>
-          
-          {/* --- DROPDOWN TOUR --- */}
-          <div
+
+          <div 
             className="dropdown-menu-container"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -52,31 +49,25 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          
+
           <Link to="/pages">PAGES</Link>
           <Link to="/contact">CONTACT US</Link>
         </nav>
 
-        {/* --- KHU VỰC HÀNH ĐỘNG (Nút bấm) --- */}
-        <div className="navbar__actions" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-          
-          <button className="btn btn--primary">BOOK NOW</button>
+        <div className="navbar__actions">
+          <button className="btn btn--primary">Become Partner</button>
 
-          {/* --- LOGIC QUAN TRỌNG: KIỂM TRA ĐĂNG NHẬP --- */}
-          {user ? (
-            // CASE 1: Đã đăng nhập -> Hiện AvatarDropdown
-            <AvatarDropdown 
-              user={user} 
-              setIsLoggedIn={setUser} // Truyền hàm này để nút Đăng xuất hoạt động (set user về null)
+          {auth?.token ? (
+            <AvatarDropdown
+              user={{ email: auth.email, role: auth.role }}
+              logout={logout}
             />
           ) : (
-            // CASE 2: Chưa đăng nhập -> Hiện nút Login/Register cũ
             <>
               <Link to="/login" className="btn btn--ghost">LOGIN</Link>
               <Link to="/register" className="btn btn--ghost">REGISTER</Link>
             </>
           )}
-
         </div>
       </div>
     </header>

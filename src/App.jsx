@@ -9,7 +9,10 @@ import VacationPackages from './Components/VacationPackages/VacationPackages';
 import Testimonials from './Components/Testimonials/Testimonials';
 import Gallery from './Components/Gallery/Gallery';
 import FooterExtended from './Components/FooterExtended/FooterExtended';
+import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 
+//import context
+import {  AuthProvider } from './context/AuthContext';
 // Import Pages
 import About from './pages/About/About'; 
 import Tour from './pages/Tour/Tour';
@@ -44,6 +47,7 @@ const FAQ = () => (
 // -----------------------------------------------------------
 const App = () => {
   return (
+    <AuthProvider>
     <Router>
       <div className="app">
         {/* Header luôn hiển thị */}
@@ -137,20 +141,29 @@ const App = () => {
             element={<Dashboard />} 
           /> */}
             {/* --- ROUTE CHO SELLER (Quản lý) --- */}
-          <Route 
-             path="/seller/dashboard" 
-             element={<SellerDashboard />} 
+         <Route 
+            path="/seller/dashboard"
+            element={
+              <ProtectedRoute role="ROLE_SELLER">
+                <SellerDashboard />
+              </ProtectedRoute>
+            }
           />
 
-          {/* --- ROUTE CHO USER (Khách) --- */}
+          {/* USER */}
           <Route 
-             path="/user/my-trips" 
-             element={<UserDashboard />} 
+            path="/dashboard/user"
+            element={
+              <ProtectedRoute role="ROLE_CUSTOMER">
+                <UserDashboard />
+              </ProtectedRoute>
+            }
           />
 
         </Routes>
       </div>
     </Router>
+    </AuthProvider>
   );
 };
 
